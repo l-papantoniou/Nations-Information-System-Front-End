@@ -1,0 +1,37 @@
+<h2>Country Stats Filter</h2>
+<div>
+  <label for="region">Region:</label>
+  <select id="region" [(ngModel)]="selectedRegion" (change)="filterResults()">
+    <option *ngFor="let region of regions" [value]="region.id">{{ region.name }}</option>
+  </select>
+</div>
+<div>
+  <label for="dateFrom">Date From:</label>
+  <input type="date" id="dateFrom" [(ngModel)]="dateFrom" (change)="filterResults()">
+</div>
+<div>
+  <label for="dateTo">Date To:</label>
+  <input type="date" id="dateTo" [(ngModel)]="dateTo" (change)="filterResults()">
+</div>
+<table>
+  <thead>
+  <tr>
+    <th>Continent</th>
+    <th>Region</th>
+    <th>Country</th>
+    <th>Year</th>
+    <th>Population</th>
+    <th>GDP</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let stat of filteredStats">
+    <td>{{ stat.continentName }}</td>
+    <td>{{ stat.regionName }}</td>
+    <td>{{ stat.countryName }}</td>
+    <td>{{ stat.year }}</td>
+    <td>{{ stat.population }}</td>
+    <td>{{ stat.gdp }}</td>
+  </tr>
+  </tbody>
+</table>
